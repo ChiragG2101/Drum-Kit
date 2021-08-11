@@ -1,3 +1,6 @@
+// keyboard key press 
+
+
 document.addEventListener("keydown",function(event){
 
     // var whichKey=event.key;
@@ -37,9 +40,10 @@ document.addEventListener("keydown",function(event){
             break;
         }
         
-    
+    buttonAnimation(event.key);
 });
 
+// click on buttons 
 
 for(var i=0;i<document.querySelectorAll(".drum").length;i++)
 {
@@ -82,7 +86,15 @@ function handleClick(){
         default:
             break;
     }
+
+    buttonAnimation(this.innerHTML);
    
 }
 
  
+function buttonAnimation(currentKey){
+    var activeButton = document.querySelector("."+currentKey);
+    activeButton.classList.add("pressed");
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+},150);}
